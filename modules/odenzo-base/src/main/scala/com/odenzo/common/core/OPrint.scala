@@ -1,7 +1,7 @@
-package com.odenzo.base
+package com.odenzo.common.core
 
-import cats.implicits._
-import pprint.{PPrinter, Tree}
+import pprint.*
+import cats.syntax.*
 
 object OPrint {
 

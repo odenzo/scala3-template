@@ -1,6 +1,7 @@
-package com.odenzo.base
+package com.odenzo.common.core
 
 import cats.Show
+
 import io.circe.Codec
 
 import scala.util.Random
