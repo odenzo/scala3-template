@@ -3,6 +3,8 @@ package com.odenzo.common.core
 import pprint.*
 import cats.syntax.all.*
 import com.odenzo.common.core.Secret
+import io.circe.*
+import io.circe.syntax.*
 
 object OPrint {
 
@@ -15,6 +17,18 @@ object OPrint {
     }
 
   }
+
+  def dprint[T](a: T): String = {
+    a match {
+      case j: Json       => jprint(j)
+      case j: JsonObject => jprint(j)
+      case general       => pprint.apply(general).render
+    }
+  }
+
+  def jprint(jo: JsonObject): String = dprint(jo.asJson)
+
+  def jprint(a: Json): String = a.spaces4
 
   val pp =
     new PPrinter(
