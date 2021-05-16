@@ -1,15 +1,14 @@
-package com.odenzo.base
+package com.odenzo.common.secrets
 
-import cats.effect._
-import cats.effect.syntax.all._
+import cats.effect.*
+import cats.effect.syntax.all.*
 
-import cats._
-import cats.data._
-import cats.syntax.all._
+import cats.*
+import cats.data.*
+import cats.syntax.all.*
 
-import cats.effect._
 import geny.Writable
-import io.circe.syntax._
+import io.circe.syntax.*
 import io.circe.{Json, JsonObject}
 import os.{CommandResult, ProcessInput, ResourcePath}
 import os.SubProcess.InputStream
@@ -18,12 +17,14 @@ import java.io.File
 import java.nio.charset.Charset
 import scala.io.Codec
 
-import io.circe._
-import io.circe.syntax._
-import io.circe.generic.auto._
+import io.circe.*
+import io.circe.syntax.*
+import io.circe.generic.auto.*
 
-/** Mozilla SOPS encryption and decryption helpers
-  * To edit in place sops -
+import com.odenzo.common.core.InputOutput
+import com.odenzo.common.core.CirceUtils
+
+/** Mozilla SOPS encryption and decryption helpers To edit in place sops -
   */
 object SOPS {
 
@@ -54,7 +55,7 @@ object SOPS {
           .out
           .text(Codec.UTF8)
       }
-      .flatMap(t => CirceUtils.parse(t))
+      .flatMap(t => CirceUtils.parse[F](t))
   }
 
   def decryptJson(fromFile: File): IO[Json] = {

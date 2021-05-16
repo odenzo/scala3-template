@@ -42,21 +42,21 @@ val scribeVersion             = "3.5.4"
 // ScalaMock?
 lazy val root =
   (project in file("."))
-    .aggregate(base, secrets)
+    .aggregate(core, secrets)
 
-lazy val base = (project in file("modules/odenzo-base"))
+lazy val core = (project in file("modules/odenzo-core"))
   .settings(libraryDependencies ++= libs_std ++ libs_cats ++ libs_circe ++ libs_test ++ libs_fs2)
 
 lazy val secrets = (project in file("modules/odenzo-secrets"))
-  .dependsOn(base)
+  .dependsOn(core)
 //.settings(libraryDependencies ++= libs_http4s)
 
 //lazy val web = (project in file("modules/odenzo-web"))
-//  .dependsOn(base, secrets)
+//  .dependsOn(core, secrets)
 //  .settings(libraryDependencies ++= libs_test)
 
 //lazy val webapp = (project in file("app/webapp"))
-//  .dependsOn(base, secrets, web)
+//  .dependsOn(core, secrets, web)
 //  .settings(libraryDependencies ++= libs_std ++ libs_cats ++ libs_circe ++ libs_test ++ libs_http4s)
 
 //////////////////////////// LIBRARIES

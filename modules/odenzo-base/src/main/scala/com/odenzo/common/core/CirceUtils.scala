@@ -111,9 +111,9 @@ trait CirceUtils {
     F.fromEither(obj)
   }
 
-  def parseAsJson[F[_]](f: File): F[Json] = {
-    ApplicativeError[F, Throwable].fromEither(io.circe.parser.parseFile(f).leftMap(pf => OError(s"Error Parsing File $f to Json", pf)))
-  }
+//  def parseAsJson[F[_]](f: File): F[Json] = {
+//    io.circe.parser.parse.parseFile(f).leftMap(pf => OError(s"Error Parsing File $f to Json", pf)))
+//  }
 
   def loadJsonResource[F[_]: Sync](path: String): F[Json] = {
 
@@ -189,4 +189,4 @@ trait CirceUtils {
 
 }
 
-object CirceUtils {}
+object CirceUtils extends CirceUtils
