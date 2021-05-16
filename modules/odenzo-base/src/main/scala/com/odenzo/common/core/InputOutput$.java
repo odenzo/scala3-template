@@ -1,4 +1,9 @@
-package com.odenzo.common.core;object InputOutput {
+package com.odenzo.common.core;
+
+import cats.effect.*
+import cats.effect.syntax.*
+
+object InputOutput {
 
         /**
          * Loads text file returnuing list of line content with EOL delimeters
