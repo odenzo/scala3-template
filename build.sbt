@@ -24,14 +24,14 @@ lazy val library = new {
   object Version {
     val log4j      = "2.14.0"
     val logback    = "1.2.3"
-    val mockito    = "3.7.7"
+    val mockito    = "3.10.0"
     val munit      = "0.7.26"
     val slf4j      = "1.7.30"
     val slf4s      = "0.1.1"
     val catsEffect = "3.1.1"
     val cats       = "2.6.1"
     val circe      = "0.14.0-M7"
-    val doobie     = "0.9.0"
+    val doobie     = "1.0.0-M2"
     val fs2        = "3.0.3"
     val http4s     = "1.0.0-M21"
     val monocle    = "3.0.0-M5"
@@ -131,7 +131,7 @@ lazy val root =
 lazy val core = (project in file("modules/odenzo-core"))
   .settings(
     libraryDependencies ++= library.stdLibs ++ library.cats ++ library.circe ++
-      library.testing ++ library.fs2
+      library.testing ++ library.fs2 ++ library.doobie
   )
 
 lazy val secrets = (project in file("modules/odenzo-secrets"))
