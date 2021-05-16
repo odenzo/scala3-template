@@ -1,8 +1,5 @@
 import MyCompileOptions._
 
-val javart                      = "1.11" // java.runtime.version
-lazy val supportedScalaVersions = Seq("3.0.0")
-
 ThisBuild / scalaVersion := "3.0.0"
 semanticdbEnabled        := true
 bspEnabled               := false
@@ -13,20 +10,11 @@ Test / fork              := true
 Test / parallelExecution := false
 Test / logBuffered       := false
 
-resolvers ++= Seq(Resolver.sonatypeRepo("releases"), Resolver.defaultLocal, Resolver.bintrayRepo("tersesystems", "maven"))
-
 scalacOptions := (CrossVersion.partialVersion(scalaVersion.value) match {
   case Some((3, n))            => optsV3_0 ++ warningsV3_0 ++ lintersV3_0
   case Some((2, n)) if n >= 13 => optsV2_13_5 ++ warningsV2_13_5 ++ lintersV2_13_5
   case _                       => Seq("-Yno-adapted-args")
 })
-
-lazy val commonSettings = Seq(
-  resolvers ++= Seq(
-    Resolver.defaultLocal,
-    Resolver.jcenterRepo // This is JFrogs Maven Repository for reading
-  )
-)
 
 val catsEffectVersion         = "3.1.1"
 val catsVersion               = "2.6.1"
@@ -52,28 +40,24 @@ val scribeVersion             = "3.5.4"
 // TypeLevel Literally
 // scalandio Chimney
 // ScalaMock?
-lazy val etrade_project =
+lazy val root =
   (project in file("."))
-    .aggregate(common, models, http4s, etrade, desktop)
+    .aggregate(base, secrets)
 
-lazy val common = (project in file("modules/common"))
-  .settings(commonSettings, libraryDependencies ++= libs_std ++ libs_cats ++ libs_circe ++ libs_test ++ libs_fs2 ++ libs_scodec)
+lazy val base = (project in file("modules/odenzo-base"))
+  .settings(libraryDependencies ++= libs_std ++ libs_cats ++ libs_circe ++ libs_test ++ libs_fs2)
 
-lazy val http4s = (project in file("modules/http4s"))
-  .dependsOn(common)
-  .settings(libraryDependencies ++= libs_http4s)
+lazy val secrets = (project in file("modules/odenzo-secrets"))
+  .dependsOn(base)
+//.settings(libraryDependencies ++= libs_http4s)
 
-lazy val models = (project in file("modules/models"))
-  .dependsOn(common)
-  .settings(libraryDependencies ++= libs_test)
+//lazy val web = (project in file("modules/odenzo-web"))
+//  .dependsOn(base, secrets)
+//  .settings(libraryDependencies ++= libs_test)
 
-lazy val etrade = (project in file("modules/etrade"))
-  .dependsOn(common, models, http4s)
-  .settings(libraryDependencies ++= libs_std ++ libs_cats ++ libs_circe ++ libs_test ++ libs_http4s)
-
-lazy val desktop = (project in file("app/desktop"))
-  .dependsOn(common, models, http4s, etrade)
-  .settings(libraryDependencies ++= libs_std ++ libs_cats ++ libs_circe ++ libs_test)
+//lazy val webapp = (project in file("app/webapp"))
+//  .dependsOn(base, secrets, web)
+//  .settings(libraryDependencies ++= libs_std ++ libs_cats ++ libs_circe ++ libs_test ++ libs_http4s)
 
 //////////////////////////// LIBRARIES
 val libs_std = Seq(
@@ -102,11 +86,12 @@ val libs_fs2 = Seq(
 val libs_circe = Seq(
   "io.circe" %% "circe-core"    % circeVersion,
   "io.circe" %% "circe-generic" % circeVersion,
-  //"io.circe" %% "circe-generic-extras" % circeGenericExtrasVersion,
-  "io.circe" %% "circe-parser"  % circeVersion
+  "io.circe" %% "circe-extras"  % circeVersion,
+  "io.circe" %% "circe-parser"  % circeVersion,
+  "io.circe" %% "circe-pointer" % circeVersion,
   //"io.circe" %% "circe-optics"  % circeOpticsVersion
   //"io.circe" %% "circe-literal"        % circeVersion
-  // "io.circe" %% "circe-scodec"         % circeVersion,
+  "io.circe" %% "circe-scodec"  % circeVersion
   // "io.circe" %% "circe-fs2"            % circeVersion
 )
 
@@ -126,15 +111,15 @@ val libs_scodec = Seq(
 
 //val libs_squants = Seq("org.typelevel" %% "squants" % squantsV)
 
-val libs_http4s = Seq(
-  //  "io.circe"       %% "circe-spire"          % "0.1.0",   Meh, stuck at 2.12
-  "org.http4s" %% "http4s-dsl"          % http4sVersion,
-  "org.http4s" %% "http4s-blaze-server" % http4sVersion,
-  "org.http4s" %% "http4s-blaze-client" % http4sVersion,
-  "org.http4s" %% "http4s-circe"        % http4sVersion
-  //"org.http4s" %% "http4s-scalatags"    % http4sVersion
-  //"org.http4s" %% "http4s-jdk-http-client" % "0.3.6"
-)
+//val libs_http4s = Seq(
+//  //  "io.circe"       %% "circe-spire"          % "0.1.0",   Meh, stuck at 2.12
+//  "org.http4s" %% "http4s-dsl"          % http4sVersion,
+//  "org.http4s" %% "http4s-blaze-server" % http4sVersion,
+//  "org.http4s" %% "http4s-blaze-client" % http4sVersion,
+//  "org.http4s" %% "http4s-circe"        % http4sVersion
+//  //"org.http4s" %% "http4s-scalatags"    % http4sVersion
+//  //"org.http4s" %% "http4s-jdk-http-client" % "0.3.6"
+//)
 
 val lib_doobie = Seq(
   // Start with this one     (skunk?)

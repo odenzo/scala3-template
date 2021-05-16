@@ -6,7 +6,6 @@ import cats.{ApplicativeError, Monad}
 import io.circe._
 import io.circe.jawn.JawnParser
 import io.circe.syntax._
-import scribe.Logging
 
 import java.io.{File, FileOutputStream, OutputStreamWriter}
 import java.net.URL
@@ -15,9 +14,7 @@ import scala.math.Ordering
 
 /**  Traits for working with Circe Json / DOM
   */
-trait CirceUtils extends Logging {
-
-
+trait CirceUtils {
 
   def json2object[F[_]](json: Json)(implicit F: ApplicativeError[F, Throwable]): F[JsonObject] =
     F.fromOption(json.asObject, OError("JSON was not a JSonObject" + json))
@@ -182,7 +179,6 @@ trait CirceUtils extends Logging {
   }
 
   def loadJsonRecordsFromFile[T: io.circe.Codec, F[_]: Sync](file: File): F[List[T]] = {
-    import io.circe.generic.codec.DerivedAsObjectCodec.deriveCodec
     for {
       json <- CirceUtils.loadJson(file.toURI.toURL)(Sync[F])
       txns <- ApplicativeError[F, Throwable].fromEither(json.as[List[T]])

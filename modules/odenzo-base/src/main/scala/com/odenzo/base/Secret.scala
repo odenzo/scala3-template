@@ -1,9 +1,9 @@
 package com.odenzo.base
 
-import scala.util.Random
-
 import cats.Show
 import io.circe.Codec
+
+import scala.util.Random
 
 /** Note: User oprint instead of pprint to continue masking */
 case class Secret(secret: String) {

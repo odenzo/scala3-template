@@ -48,7 +48,7 @@ object SOPS {
   def decryptJson[F[_]: Sync](input: ResourcePath): F[Json] = {
     Sync[F]
       .delay {
-        scribe.debug(s"Loading Resource Path ${input.segments}")
+        // scribe.debug(s"Loading Resource Path ${input.segments}")
         os.proc(Seq(sopsPath, "--input-type", "json", "--output-type", "json", "-d", "/dev/stdin"))
           .call(stdin = input.toSource, check = true)
           .out
