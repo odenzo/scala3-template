@@ -1,0 +1,7 @@
+/.idea/
+target/
+/.env
+/modules/domains/target/
+/report-11301471672660908981.html
+/.bsp/sbt.json
+/modules/domains/src/test/resources/tx_history_rs/tx_history_rs_2019-08-28.json
