@@ -46,6 +46,7 @@ trait CirceUtils {
 
   def findField(json: JsonObject, fieldName: String): Option[Json] = json(fieldName)
 
+  /** Error is not jsonObject, optional None if field not found */
   def findField[F[_]](json: Json, fieldName: String)(implicit F: ApplicativeError[F, Throwable]): F[Option[Json]] =
     json2object(json).map(findField(_, fieldName))
 
@@ -116,7 +117,6 @@ trait CirceUtils {
 //  }
 
   def loadJsonResource[F[_]: Sync](path: String): F[Json] = {
-
     val resource: URL          = getClass.getResource(path)
     val source: BufferedSource = Source.fromURL(resource)
     val data: String           = source.getLines().mkString("\n")

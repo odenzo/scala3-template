@@ -1,7 +1,11 @@
 package com.odenzo.common.core
 
+import cats.*
+import cats.data.*
+import cats.syntax.all.*
 import io.circe.*
 
+type FError = ApplicativeError[?, Throwable]
 object OError {
 
   def NOT_IMPLEMENTED: Throwable                                  = OError("Not Implemented")
