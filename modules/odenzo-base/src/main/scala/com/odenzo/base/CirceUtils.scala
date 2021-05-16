@@ -17,12 +17,7 @@ import scala.math.Ordering
   */
 trait CirceUtils extends Logging {
 
-  case class Person(name:String, age:Int)
 
-  given personOrdering as Ordering[Person] {
-    override def compare(x: Person, y: Person): Int =
-      x.surname.compareTo(y.surname)
-  }
 
   def json2object[F[_]](json: Json)(implicit F: ApplicativeError[F, Throwable]): F[JsonObject] =
     F.fromOption(json.asObject, OError("JSON was not a JSonObject" + json))
