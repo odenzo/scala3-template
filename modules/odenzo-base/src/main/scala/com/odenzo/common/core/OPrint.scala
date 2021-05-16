@@ -1,7 +1,8 @@
 package com.odenzo.common.core
 
 import pprint.*
-import cats.syntax.*
+import cats.syntax.all.*
+import com.odenzo.common.core.Secret
 
 object OPrint {
 
