@@ -1,6 +1,7 @@
 package com.odenzo.common.secrets
 
 import io.circe.*
+
 import cats.*
 import cats.data.*
 import cats.syntax.*
@@ -10,6 +11,10 @@ import cats.effect.syntax.all.*
 import java.io.File
 import java.nio.charset.Charset
 import scala.io.Codec
+import _root_.com.odenzo.common.core.OError
+import _root_.com.odenzo.common.core.InputOutput
+import _root_.os.ResourcePath
+import _root_.os.CommandResult
 
 /** Mozilla SOPS encryption and decryption helpers To edit in place sops -
   */
@@ -33,16 +38,15 @@ object SOPS {
 
   override def equals(obj: Any): Boolean = super.equals(obj)
 
-  def decryptJson[F[_]: Sync](input: ResourcePath): F[Json] = {
-    Sync[F]
-      .delay {
-        // scribe.debug(s"Loading Resource Path ${input.segments}")
-        os.proc(Seq(sopsPath, "--input-type", "json", "--output-type", "json", "-d", "/dev/stdin"))
-          .call(stdin = input.toSource, check = true)
-          .out
-          .text(Codec.UTF8)
-      }
-      .flatMap(t => CirceUtils.parse[F](t))
+  def decryptJson(input: ResourcePath): IO[Json] = {
+    IO.delay {
+      // scribe.debug(s"Loading Resource Path ${input.segments}")
+      os
+        .proc(Seq(sopsPath, "--input-type", "json", "--output-type", "json", "-d", "/dev/stdin"))
+        .call(stdin = input.toSource, check = true)
+        .out
+        .text(Codec.UTF8)
+    }.flatMap(t => com.odenzo.common.core.CirceUtils.parse[IO](t))
   }
 
   def decryptJson(fromFile: File): IO[Json] = {

@@ -10,10 +10,9 @@ object InputOutput {
 
   /** Loads text file returnuing list of line content with EOL delimeters
     */
-  def loadTextFile(filename: String = "/Users/stevef/Desktop/ODENZO-NZ-Ltd-28SEP2019-to-28SEP2020.csv"): IO[List[String]] = {
-    import scala.io._
+  def loadTextFile(filename: String): IO[List[String]] = {
+    import scala.io.*
     val acquire          = IO(Source.fromFile(filename)(Codec.UTF8))
-    //os.read.lines(filename)
     def close(s: Source) = IO(s.close())
 
     Resource
