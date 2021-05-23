@@ -1,4 +1,4 @@
-import MyCompileOptions._
+import MyCompileOptions.*
 
 inThisBuild(
   Seq(

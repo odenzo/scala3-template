@@ -5,7 +5,7 @@ import com.odenzo.etrade.api.AccountsApi
 import com.odenzo.etrade.auth.ETradeSession
 import com.odenzo.etrade.models.Account
 import scalatags.Text
-import scalatags.Text.all._
+import scalatags.Text.all.*
 
 object MainMenu {
 

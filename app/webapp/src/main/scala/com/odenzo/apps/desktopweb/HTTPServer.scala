@@ -1,6 +1,6 @@
 package com.odenzo.accounting.desktopweb
 
-import cats.effect.unsafe._
+import cats.effect.unsafe.*
 import cats.effect.IOPlatform
 import cats.effect.ExitCode
 import com.odenzo.base.OPrint.oprint

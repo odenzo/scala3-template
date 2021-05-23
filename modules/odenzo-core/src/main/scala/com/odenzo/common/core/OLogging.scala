@@ -14,7 +14,7 @@ trait OLogging {
     *   @return
     * @tparam T
     */
- 
+
   //  /** Clears all handlers and modifiers (e.g. muted classes and packages) and set local level to l */
   //  def resetTo(l: Level): Logger = {
   //    scribe.Logger.root.clearHandlers().clearModifiers().withHandler(minimumLevel = Some(l)).replace()

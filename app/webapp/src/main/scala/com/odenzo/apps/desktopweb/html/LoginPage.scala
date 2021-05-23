@@ -1,14 +1,14 @@
 package com.odenzo.accounting.desktopweb.html
 
 import scalatags.Text
-import scalatags.Text.all._
+import scalatags.Text.all.*
 
 object LoginPage {
 
   def fullLoginPage(): Text.TypedTag[String] = {
-    import scalatags._
-    import scalatags.Text._
-    import scalatags.Text.all._
+    import scalatags.*
+    import scalatags.Text.*
+    import scalatags.Text.all.*
 
     html(
       head(title := "E-Trade Control Center"),

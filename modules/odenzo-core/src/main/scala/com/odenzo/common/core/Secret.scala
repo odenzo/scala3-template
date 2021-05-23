@@ -17,7 +17,7 @@ object Secret {
   def generate: Secret                        = Secret(generatePassword())
   def generate(len: Int = 15): Secret         = Secret(generatePassword(len))
 
-  import io.circe.generic.auto._
+  import io.circe.generic.auto.*
 
   implicit val show: Show[Secret] = Show.fromToString[Secret]
 }
