@@ -20,9 +20,6 @@ Test / fork              := true
 Test / parallelExecution := false
 Test / logBuffered       := false
 
-// TypeLevel Literally (Yeah!)
-// scalandio Chimney
-
 lazy val root =
   (project in file("."))
     .aggregate(core, secrets)
