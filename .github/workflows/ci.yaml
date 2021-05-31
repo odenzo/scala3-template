@@ -20,4 +20,4 @@ jobs:
           sbt +test
       - name: Run documentation
         run: |
-          sbt packageSrc docs/mdoc
+          sbt packageSrc doc
