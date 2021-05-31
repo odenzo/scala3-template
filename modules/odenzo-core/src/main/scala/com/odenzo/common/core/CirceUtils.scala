@@ -66,14 +66,7 @@ trait CirceUtils {
     F.fromOption(json.asObject.map(_.toList), OError("JSON Fragment was not a JSON Object"))
   }
 
-  /** Ripled doesn't like objects like { x=null }
-    */
-  val droppingNullsPrinter: Printer = Printer.spaces2.copy(dropNullValues = true)
 
-  /** Converts json to formatted text dropping null JsonObject fields.
-    */
-  def print(json: Json): String                = json.printWith(droppingNullsPrinter)
-  def printObj(jsonObject: JsonObject): String = print(jsonObject.asJson)
 
   /** Caution: Uses BigDecimal and BigInt in parsing.
     *

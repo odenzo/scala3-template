@@ -5,8 +5,14 @@ import cats.effect.syntax.*
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import os.*
 
+/** Generally I use os-lib for this now */
 object InputOutput {
+
+  def writeToFile(txt: String) = {
+    os.write(os.pwd / "foo.txt", txt)
+  }
 
   /** Loads text file returnuing list of line content with EOL delimeters
     */

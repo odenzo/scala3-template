@@ -39,7 +39,7 @@ trait FU {
     */
   def optionOne[F[_]: ApplicativeThrow, A](msg: String)(l: List[A]): F[Option[A]] =
     val err = OError(s"Expected List Size 0 or 1 but  ${l.length}: $msg")
-    if l.length > 1 then ApplicativeThrow[F].raiseError(err)
+    if l.length > 1 then  ApplicativeThrow[F].raiseError(err)
     else ApplicativeThrow[F].pure(l.headOption)
 
   /** Raises an Option.empty to Error
