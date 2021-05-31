@@ -18,7 +18,7 @@ import java.io.OutputStreamWriter
 import java.io.FileOutputStream
 import com.odenzo.common.core.OError
 
-/** Traits for working with Circe Json / DOM
+/** Traits for working with Circe Json / DOM acrrued far too long. Will circe-optics return?
   */
 trait CirceUtils {
 
@@ -31,8 +31,7 @@ trait CirceUtils {
   def json2string[F[_]](json: Json)(implicit F: ApplicativeError[F, Throwable]): F[String] =
     F.fromOption(json.asString, OError("JSON was not a String" + json))
 
-  /** To avoid importing io.circe.syntax to use .asJson :-) Also allows explicitly passing in the encoder
-    */
+  /** Explicit JSON encoder, similar to a.asJson */
   def encode[A](a: A)(implicit enc: Encoder[A]): Json = enc.apply(a)
 
   /** Easily decode wrapped in our Either AppError style.
