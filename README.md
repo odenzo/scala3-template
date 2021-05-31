@@ -6,11 +6,12 @@ The primary dependency drivers are Cats Effect 3.x and Scala 3
 Stack:
 - Cats
 - Cats Effect 3
-- FS2 - 3.03 Cats Effect 3, Scala 3
+- FS2 - 3.03  for Cats Effect 3, Scala 3
 - Circe (Milestones)
 - Doobie **Trouble**
 - http4s **Trouble**
 - scodec-bits
+- Monocle 3.x.x -- but no CHimney or Circe Optics
              
 Testing:
 - mockito

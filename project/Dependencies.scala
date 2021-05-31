@@ -36,8 +36,9 @@ object Dependencies {
   lazy val cats = Seq("org.typelevel" %% "cats-core" % Version.cats, "org.typelevel" %% "cats-effect" % Version.catsEffect)
 
   lazy val fs2 = Seq(
-    "co.fs2" %% "fs2-core" % Version.fs2, // For cats 2 and cats-effect 2
-    "co.fs2" %% "fs2-io"   % Version.fs2 // circe-fs2 in the circe lib
+    "co.fs2" %% "fs2-core"             % Version.fs2, // CE 3
+    "co.fs2" %% "fs2-io"               % Version.fs2, //
+    "co.fs2" %% "fs2-reactive-streams" % Version.fs2 // circe-fs2 in the circe lib
   )
 
   val monocle = Seq(
@@ -64,7 +65,7 @@ object Dependencies {
     // "io.circe" %% "circe-fs2"            % circeVersion
   )
 
-  lazy val testing = Seq( // All these have scalajs and Scala 3
+  lazy val testingMUnit = Seq( // All these have scalajs and Scala 3
     //"org.mockito"    % "mockito-core"        % Version.mockito   % Test,
     //"org.scalamock" %% "scalamock" % "5.1.0" % Test
     "org.scalameta" %% "munit"               % Version.munit     % Test,
@@ -106,6 +107,6 @@ object Dependencies {
 
   //val chimney = Seq()
 
-  lazy val all = http4s ++ scodec ++ testing ++ circe ++ fs2 ++ cats ++ stdLibs ++ monocle
+  lazy val all = http4s ++ scodec ++ testingMUnit ++ circe ++ fs2 ++ cats ++ stdLibs ++ monocle
 
 }

@@ -31,24 +31,25 @@ lazy val root =
 
 lazy val core = (project in file("modules/odenzo-core"))
   .settings(
-    libraryDependencies ++= Dependencies.stdLibs ++ Dependencies.cats ++ Dependencies.circe ++
-      Dependencies.testing ++ Dependencies.fs2 ++ Dependencies.doobie
+    libraryDependencies ++=
+      Dependencies.stdLibs ++
+        Dependencies.cats ++
+        Dependencies.circe ++
+        Dependencies.testingMUnit ++
+        Dependencies.fs2 ++
+        Dependencies.doobie ++
+        Dependencies.monocle
   )
 
 lazy val secrets = (project in file("modules/odenzo-secrets"))
   .dependsOn(core)
   .settings(libraryDependencies ++= Dependencies.all)
 
-lazy val web = (project in file("modules/odenzo-web"))
-  .dependsOn(core, secrets)
-  .settings(libraryDependencies ++= Dependencies.testing)
-
 lazy val webapp = (project in file("app/webapp"))
-  .dependsOn(core, secrets, web)
+  .dependsOn(core, secrets)
   .settings(
     libraryDependencies ++= Dependencies.stdLibs ++
       Dependencies.cats ++
       Dependencies.circe ++
-      Dependencies.testing ++
       Dependencies.http4s
   )
