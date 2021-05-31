@@ -66,8 +66,6 @@ trait CirceUtils {
     F.fromOption(json.asObject.map(_.toList), OError("JSON Fragment was not a JSON Object"))
   }
 
-
-
   /** Caution: Uses BigDecimal and BigInt in parsing.
     *
     * @param m
