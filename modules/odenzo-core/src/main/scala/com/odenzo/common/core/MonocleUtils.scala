@@ -1,6 +1,8 @@
 package com.odenzo.common.core
+
 import monocle.*
 import monocle.syntax.all.*
+
 object MonocleUtils {
 
   case class User(name: String, address: Address)
