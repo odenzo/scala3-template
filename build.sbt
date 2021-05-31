@@ -1,4 +1,5 @@
 import MyCompileOptions._
+import Dependencies._
 
 inThisBuild(
   Seq(
@@ -130,20 +131,25 @@ lazy val root =
 
 lazy val core = (project in file("modules/odenzo-core"))
   .settings(
-    libraryDependencies ++= library.stdLibs ++ library.cats ++ library.circe ++
-      library.testing ++ library.fs2
+    libraryDependencies ++=
+      Dependencies.stdLibs ++
+        Dependencies.cats ++
+        Dependencies.circe ++
+        Dependencies.testingMUnit ++
+        Dependencies.fs2 ++
+        Dependencies.doobie ++
+        Dependencies.monocle
   )
 
 lazy val secrets = (project in file("modules/odenzo-secrets"))
   .dependsOn(core)
-//.settings(libraryDependencies ++= libs_http4s)
+  .settings(libraryDependencies ++= Dependencies.all)
 
-//lazy val web = (project in file("modules/odenzo-web"))
-//  .dependsOn(core, secrets)
-//  .settings(libraryDependencies ++= libs_test)
-
-//lazy val webapp = (project in file("app/webapp"))
-//  .dependsOn(core, secrets, web)
-//  .settings(libraryDependencies ++= libs_std ++ libs_cats ++ libs_circe ++ libs_test ++ libs_http4s)
-
-//////////////////////////// LIBRARIES
+lazy val webapp = (project in file("app/webapp"))
+  .dependsOn(core, secrets)
+  .settings(
+    libraryDependencies ++= Dependencies.stdLibs ++
+      Dependencies.cats ++
+      Dependencies.circe ++
+      Dependencies.http4s
+  )
