@@ -19,8 +19,7 @@ object Dependencies {
     val scalaTags  = "0.9.4"
     val scodec     = "2.0.0"
     val scodecBits = "1.1.27"
-    val slf4j      = "1.7.30"
-    val slf4s      = "0.2.0"
+    val slf4s      = "0.2.0" // This should bring in slf4j
     //val squantsV                  = "1.7.4"
   }
 
@@ -106,6 +105,7 @@ object Dependencies {
   )
 
   //val chimney = Seq()
+  //val spire = Seq()
 
   lazy val all = http4s ++ scodec ++ testingMUnit ++ circe ++ fs2 ++ cats ++ stdLibs ++ monocle
 
