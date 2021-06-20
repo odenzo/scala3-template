@@ -14,9 +14,10 @@ import java.io.File
 import java.net.URL
 import scala.io.BufferedSource
 import scala.io.Source
+import scala.util.chaining.*
 import java.io.OutputStreamWriter
 import java.io.FileOutputStream
-import com.odenzo.common.core.OError
+import com.odenzo.common.core.*
 
 /** Traits for working with Circe Json / DOM acrrued far too long. Will circe-optics return?
   */
@@ -28,7 +29,7 @@ trait CirceUtils {
   def json2array[F[_]](json: Json)(implicit F: ApplicativeError[F, Throwable]): F[Vector[Json]] =
     F.fromOption(json.asArray, OError("JSON was not a Array" + json))
 
-  def json2string[F[_]](json: Json)(implicit F: ApplicativeError[F, Throwable]): F[String] =
+  def json2string[F[_]](json: Json)(implicit F: ApplicativeThrow[F]): F[String] =
     F.fromOption(json.asString, OError("JSON was not a String" + json))
 
   /** Explicit JSON encoder, similar to a.asJson */
@@ -74,7 +75,7 @@ trait CirceUtils {
     *   JSON or an exception if problems parsing, error holds the original String.
     */
   def parse[F[_]: Sync](m: String): F[Json] = {
-    ApplicativeError[F, Throwable].fromEither(parser.parse(m).leftMap(pf => OError("Error Parsing String to Json: $m", pf)))
+    ApplicativeThrow[F].fromEither(parser.parse(m).leftMap(pf => OError(s"Error Parsing String to Json: $m", pf)))
   }
 
   def hasField(name: String, json: Json): Boolean = json.asObject.exists(hasField(name, _))
@@ -91,15 +92,13 @@ trait CirceUtils {
     json2object[F](json).flatMap(v => extractFieldFromObject[F](v, name))
   }
 
-  def extractFieldAs[T: Decoder, F[_]](name: String, json: Json)(implicit F: ApplicativeError[F, Throwable]): Any = {
+  def extractFieldAs[T: Decoder, F[_]: Monad](name: String, json: Json)(implicit F: MonadThrow[F]): Any = {
 
     import cats.syntax.all.*
-    // To avoid map or flatMap
-    val obj: Either[Throwable, T] = Either
-      .fromOption(json.asObject, OError("Not a JSONObject"))
-      .flatMap(jo => Either.fromOption(jo(name), OError(s"No Field $name")))
-      .flatMap(jf => jf.as[T])
-    F.fromEither(obj)
+
+    FU.required("JSONObject")(json.asObject)
+      .flatMap(jo => FU.required(s"Field Name $name")(jo(name)))
+      .flatMap(j => F.fromEither(j.as[T]))
   }
 
 //  def parseAsJson[F[_]](f: File): F[Json] = {
