@@ -9,7 +9,7 @@ object Dependencies {
     val http4s     = "0.23.0-RC1"
     val logback    = "1.2.3"
     val mockito    = "3.10.0"
-    val monocle    = "3.0.0-M6"
+    val monocle    = "3.0.0"
     val munit      = "0.7.26"
     val munitCats  = "1.0.5"
     val osLib      = "0.7.8"
