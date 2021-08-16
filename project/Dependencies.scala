@@ -2,15 +2,17 @@ import sbt._
 object Dependencies {
   object Version {
     val cats       = "2.6.1"
-    val catsEffect = "3.1.1"
+    val catsEffect = "3.2.3"
     val circe      = "0.14.1"
     val doobie     = "1.0.0-M5"
-    val fs2        = "3.0.5"
+    val fs2        = "3.0.6"
     val http4s     = "0.23.0-RC1"
-    val logback    = "1.2.3"
+    val logback    = "1.2.5"
     val mockito    = "3.10.0"
+
     val monocle    = "3.0.0"
     val munit      = "0.7.26"
+
     val munitCats  = "1.0.5"
     val osLib      = "0.7.8"
     val pprint     = "0.6.6"
