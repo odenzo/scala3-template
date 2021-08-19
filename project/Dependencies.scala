@@ -9,10 +9,10 @@ object Dependencies {
     val http4s     = "0.23.1"
     val logback    = "1.2.5"
 
-    val mockito    = "3.10.0"
+    val mockito = "3.10.0"
 
-    val monocle    = "3.0.0"
-    val munit      = "0.7.26"
+    val monocle = "3.0.0"
+    val munit   = "0.7.26"
 
     val munitCats  = "1.0.5"
     val osLib      = "0.7.8"
@@ -40,7 +40,7 @@ object Dependencies {
   lazy val fs2 = Seq(
     "co.fs2" %% "fs2-core"             % Version.fs2, // CE 3
     "co.fs2" %% "fs2-io"               % Version.fs2, //
-    "co.fs2" %% "fs2-reactive-streams" % Version.fs2 // circe-fs2 in the circe lib
+    "co.fs2" %% "fs2-reactive-streams" % Version.fs2  // circe-fs2 in the circe lib
   )
 
   val monocle = Seq(
