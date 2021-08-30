@@ -12,7 +12,7 @@ object Dependencies {
     val mockito = "3.10.0"
 
     val monocle = "3.0.0"
-    val munit   = "0.7.26"
+    val munit   = "0.7.28"
 
     val munitCats  = "1.0.5"
     val osLib      = "0.7.8"
@@ -44,9 +44,9 @@ object Dependencies {
   )
 
   val monocle = Seq(
-    "com.github.julien-truffaut" %% "monocle-core"  % Version.monocle,
-    "com.github.julien-truffaut" %% "monocle-macro" % Version.monocle,
-    "com.github.julien-truffaut" %% "monocle-law"   % Version.monocle % Test
+    "dev.optics" %% "monocle-core"  % Version.monocle,
+    "dev.optics" %% "monocle-macro" % Version.monocle,
+    "dev.optics" %% "monocle-law"   % Version.monocle % Test
   )
 
   /** Currently this is only for the binary serialization */
