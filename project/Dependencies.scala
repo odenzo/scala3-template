@@ -6,7 +6,7 @@ object Dependencies {
     val circe      = "0.14.1"
     val doobie     = "1.0.0-M5"
     val fs2        = "3.1.1"
-    val http4s     = "0.23.1"
+    val http4s     = "0.23.2"
     val logback    = "1.2.5"
 
     val mockito = "3.10.0"
