@@ -11,7 +11,7 @@ object Dependencies {
 
     val mockito = "3.10.0"
 
-    val monocle = "3.0.0"
+    val monocle = "3.1.0"
     val munit   = "0.7.28"
 
     val munitCats  = "1.0.5"
