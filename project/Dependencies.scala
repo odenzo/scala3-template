@@ -8,12 +8,9 @@ object Dependencies {
     val fs2        = "3.1.1"
     val http4s     = "0.23.1"
     val logback    = "1.2.5"
-
     val mockito = "3.10.0"
-
-    val monocle = "3.0.0"
+    val monocle = "3.1.0"
     val munit   = "0.7.29"
-
     val munitCats  = "1.0.5"
     val osLib      = "0.7.8"
     val pprint     = "0.6.6"
