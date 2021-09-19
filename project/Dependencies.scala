@@ -4,16 +4,14 @@ object Dependencies {
     val cats       = "2.6.1"
     val catsEffect = "3.2.5"
     val circe      = "0.14.1"
-    val doobie     = "1.0.0-M5"
+    val doobie     = "1.0.0-RC1"
     val fs2        = "3.1.1"
-    val http4s     = "0.23.1"
+
     val logback    = "1.2.6"
-
+    val http4s     = "0.23.3"
     val mockito = "3.10.0"
-
-    val monocle = "3.0.0"
-    val munit   = "0.7.28"
-
+    val monocle = "3.1.0"
+    val munit   = "0.7.29"
     val munitCats  = "1.0.5"
     val osLib      = "0.7.8"
     val pprint     = "0.6.6"
@@ -21,7 +19,7 @@ object Dependencies {
     val scalaCss   = "0.7.0"
     val scalaTags  = "0.9.4"
     val scodec     = "2.0.0"
-    val scodecBits = "1.1.27"
+    val scodecBits = "1.1.28"
     val slf4s      = "0.2.0" // This should bring in slf4j
     //val squantsV                  = "1.7.4"
   }
