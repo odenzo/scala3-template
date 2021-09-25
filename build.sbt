@@ -20,11 +20,11 @@ Test / fork              := true
 Test / parallelExecution := false
 Test / logBuffered       := false
 
-lazy val root =
+lazy val root    =
   (project in file("."))
     .aggregate(core, secrets)
 
-lazy val core = (project in file("modules/odenzo-core"))
+lazy val core    = (project in file("modules/odenzo-core"))
   .settings(
     libraryDependencies ++=
       Dependencies.stdLibs ++
@@ -40,7 +40,7 @@ lazy val secrets = (project in file("modules/odenzo-secrets"))
   .dependsOn(core)
   .settings(libraryDependencies ++= Dependencies.all)
 
-lazy val webapp = (project in file("app/webapp"))
+lazy val webapp  = (project in file("app/webapp"))
   .dependsOn(core, secrets)
   .settings(
     libraryDependencies ++= Dependencies.stdLibs ++
