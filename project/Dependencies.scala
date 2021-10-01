@@ -19,7 +19,7 @@ object Dependencies {
     val scalaCss   = "0.7.0"
     val scalaTags  = "0.9.4"
     val scodec     = "2.0.0"
-    val scodecBits = "1.1.28"
+    val scodecBits = "1.1.29"
     val slf4s      = "0.2.1" // This should bring in slf4j
     //val squantsV                  = "1.7.4"
   }
