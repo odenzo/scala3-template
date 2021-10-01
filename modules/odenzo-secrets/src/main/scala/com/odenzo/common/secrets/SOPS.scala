@@ -36,7 +36,7 @@ object SOPS {
       }
     }
 
-  override def equals(obj: Any): Boolean = super.equals(obj)
+  override def equals(obj: Any): Boolean          = super.equals(obj)
 
   def decryptJson(input: ResourcePath): IO[Json] = {
     IO.delay {

@@ -8,11 +8,13 @@ object Dependencies {
     val fs2        = "3.1.3"
 
     val logback    = "1.2.6"
+
     val http4s     = "0.23.4"
     val mockito = "3.10.0"
     val monocle = "3.1.0"
     val munit   = "0.7.29"
     val munitCats  = "1.0.6"
+
     val osLib      = "0.7.8"
     val pprint     = "0.6.6"
     val scala      = "1.15.3"
@@ -51,7 +53,7 @@ object Dependencies {
   //val libs_html = Seq("com.lihaoyi" %% "scalatags" % Version.scalaTags, "com.github.japgolly.scalacss" %% "core" % Version.scalaCss)
 
   // As of 0.14.1 Circe Suite Partually migrated to scala 3
-  lazy val circe = Seq(
+  lazy val circe        = Seq(
     "io.circe" %% "circe-core"    % Version.circe,
     //"io.circe" %% "circe-jackson212" % Version.circe,
     "io.circe" %% "circe-generic" % Version.circe,
@@ -73,7 +75,7 @@ object Dependencies {
     "org.typelevel" %% "munit-cats-effect-3" % Version.munitCats % Test
   )
 
-  lazy val scodec = Seq(
+  lazy val scodec       = Seq(
     //  "io.circe"       %% "circe-spire"          % "0.1.0",   Meh, stuck at 2.12
     "org.scodec" %% "scodec-core" % Version.scodec,
     "org.scodec" %% "scodec-bits" % Version.scodecBits
