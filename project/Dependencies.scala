@@ -9,7 +9,7 @@ object Dependencies {
 
     val logback = "1.2.7"
 
-    val http4s    = "0.23.4"
+    val http4s    = "0.23.6"
     val mockito   = "3.10.0"
     val monocle   = "3.1.0"
     val munit     = "0.7.29"
