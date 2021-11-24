@@ -24,7 +24,7 @@ object MyCompileOptions {
       "-Ytasty-reader",
       "-Ywarn-dead-code",     // Warn when dead code is identified.
       "-Ywarn-extra-implicit" // Warn when more than one implicit parameter section is defined.
-      //"-Ywarn-inaccessible", // Warn about inaccessible types in method signatures. (Gone in 2.13)
+      // "-Ywarn-inaccessible", // Warn about inaccessible types in method signatures. (Gone in 2.13)
       // "-Ywarn-infer-any", // Warn when a type argument is inferred to be `Any`. (Gone in 2.13)
       // "-Ywarn-nullary-override", // Warn when non-nullary `def f()' overrides nullary `def f'.
       // "-Ywarn-nullary-unit", // Warn when nullary methods return Unit.
@@ -48,7 +48,7 @@ object MyCompileOptions {
       "-Xlint:inaccessible",           // Warn about inaccessible types in method signatures.
       "-Xlint:infer-any",              // Warn when a type argument is inferred to be `Any`.
       "-Xlint:missing-interpolator",   // A string literal appears to be missing an interpolator id.
-      //"-Xlint:nullary-override", // Warn when non-nullary `def f()' overrides nullary `def f'.
+      // "-Xlint:nullary-override", // Warn when non-nullary `def f()' overrides nullary `def f'.
       "-Xlint:nullary-unit",           // Warn when nullary methods return Unit.
       "-Xlint:option-implicit",        // Option.apply used implicit view.
       "-Xlint:package-object-classes", // Class or object defined in package object.
@@ -69,7 +69,7 @@ object MyCompileOptions {
       "-language:existentials", // Existential types (besides wildcard types) can be written and inferred
       "-language:higherKinds",  // Allow higher-kinded types
       "-unchecked"              // Enable additional warnings where generated code depends on assumptions.
-      //"-Xfatal-warnings"
+      // "-Xfatal-warnings"
     )
 
   val warningsV3_0: Seq[String] = Seq()

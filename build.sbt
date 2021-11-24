@@ -9,7 +9,7 @@ inThisBuild(
     licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
     homepage          := Some(url("https://github.com/odenzo/scala3template")),
     developers        := List(Developer("odenzo", "odenzo", "mail@blackhole.com", url("https://github.com/odenzo"))),
-    scalaVersion      := "3.0.2",
+    scalaVersion      := "3.1.0",
     scalacOptions ++= optsV3_0 ++ warningsV3_0 ++ lintersV3_0,
     semanticdbEnabled := true,
     bspEnabled        := false
@@ -20,11 +20,11 @@ Test / fork              := true
 Test / parallelExecution := false
 Test / logBuffered       := false
 
-lazy val root    =
+lazy val root =
   (project in file("."))
     .aggregate(core, secrets)
 
-lazy val core    = (project in file("modules/odenzo-core"))
+lazy val core = (project in file("modules/odenzo-core"))
   .settings(
     libraryDependencies ++=
       Dependencies.stdLibs ++
@@ -40,7 +40,7 @@ lazy val secrets = (project in file("modules/odenzo-secrets"))
   .dependsOn(core)
   .settings(libraryDependencies ++= Dependencies.all)
 
-lazy val webapp  = (project in file("app/webapp"))
+lazy val webapp = (project in file("app/webapp"))
   .dependsOn(core, secrets)
   .settings(
     libraryDependencies ++= Dependencies.stdLibs ++
