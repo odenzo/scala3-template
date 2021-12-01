@@ -1,7 +1,7 @@
 import sbt._
 object Dependencies {
   object Version {
-    val cats       = "2.6.1"
+    val cats       = "2.7.0"
     val catsEffect = "3.2.9"
     val circe      = "0.14.1"
     val doobie     = "1.0.0-RC1"
@@ -23,7 +23,7 @@ object Dependencies {
     val scodec     = "2.1.0"
     val scodecBits = "1.1.29"
     val slf4s      = "0.3.0" // This should bring in slf4j
-    //val squantsV                  = "1.7.4"
+    // val squantsV                  = "1.7.4"
 
   }
 
