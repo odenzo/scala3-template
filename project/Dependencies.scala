@@ -7,7 +7,7 @@ object Dependencies {
     val doobie     = "1.0.0-RC1"
     val fs2        = "3.2.2"
 
-    val logback = "1.2.7"
+    val logback = "1.2.8"
 
     val http4s    = "0.23.6"
     val mockito   = "3.10.0"
