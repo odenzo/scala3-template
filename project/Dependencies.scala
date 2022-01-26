@@ -16,7 +16,7 @@ object Dependencies {
     val munitCats = "1.0.7"
 
     val osLib      = "0.8.0"
-    val pprint     = "0.6.6"
+    val pprint     = "0.7.1"
     val scala      = "1.15.3"
     val scalaCss   = "0.7.0"
     val scalaTags  = "0.9.4"
