@@ -9,7 +9,7 @@ object Version {
 
   val logback = "1.2.10"
 
-  val http4s    = "0.23.8"
+  val http4s    = "0.23.10"
   val mockito   = "3.10.0"
   val monocle   = "3.1.0"
   val munit     = "0.7.29"
