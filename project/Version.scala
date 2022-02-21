@@ -5,7 +5,7 @@ object Version {
   val catsEffect = "3.3.5"
   val circe      = "0.14.1"
   val doobie     = "1.0.0-RC2"
-  val fs2        = "3.2.4"
+  val fs2        = "3.2.5"
 
   val logback = "1.2.10"
 
