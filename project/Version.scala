@@ -15,7 +15,7 @@ object Version {
   val munit     = "0.7.29"
   val munitCats = "1.0.7"
 
-  val osLib      = "0.8.0"
+  val osLib      = "0.8.1"
   val pprint     = "0.7.1"
   val scala      = "1.15.3"
   val scalaCss   = "0.7.0"
