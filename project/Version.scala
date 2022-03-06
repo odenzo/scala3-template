@@ -7,7 +7,7 @@ object Version {
   val doobie     = "1.0.0-RC2"
   val fs2        = "3.2.5"
 
-  val logback = "1.2.10"
+  val logback = "1.2.11"
 
   val http4s    = "0.23.10"
   val mockito   = "3.10.0"
