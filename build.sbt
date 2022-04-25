@@ -9,7 +9,7 @@ inThisBuild(
     licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
     homepage          := Some(url("https://github.com/odenzo/scala3template")),
     developers        := List(Developer("odenzo", "odenzo", "mail@blackhole.com", url("https://github.com/odenzo"))),
-    scalaVersion      := "3.1.1",
+    scalaVersion      := "3.1.2",
     scalacOptions ++= optsV3_0 ++ warningsV3_0 ++ lintersV3_0,
     semanticdbEnabled := true,
     bspEnabled        := false
