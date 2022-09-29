@@ -18,4 +18,10 @@ object FS2Utils {
       .compile
       .toList
   }
+
+  def dedup() = {
+    // this is a test
+     val stream = fs2.Stream(1, 2, 3, 4, 5)
+  }
+
 }

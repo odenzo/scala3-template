@@ -32,7 +32,7 @@ object Dependencies {
     "io.circe" %% "circe-core"    % Version.circe,
     // "io.circe" %% "circe-jackson212" % Version.circe,
     "io.circe" %% "circe-generic" % Version.circe,
-    "io.circe" %% "circe-extras"  % Version.circe,
+    // "io.circe" %% "circe-extras"  % Version.circe,
     "io.circe" %% "circe-parser"  % Version.circe,
     "io.circe" %% "circe-pointer" % Version.circe,
     // "io.circe" %% "circe-pointer-literal"    % Version.circe, // Not available 0.14.1
@@ -58,33 +58,12 @@ object Dependencies {
     // "org.scodec"  %% "scodec-cats"   % "1.1.0-RC3"
   )
 
+  val catsParse = Seq("org.typelevel" %% "cats-parse" % Version.catsParse)
   // val libs_squants = Seq("org.typelevel" %% "squants" % squantsV)
-
-  // Have to choose CE2 or CE3 on Scala 3
-  lazy val http4s = Seq(
-    //  //  "io.circe"       %% "circe-spire"          % "0.1.0",   Meh, stuck at 2.12
-    "org.http4s" %% "http4s-core"         % Version.http4s,
-    "org.http4s" %% "http4s-dsl"          % Version.http4s,
-    "org.http4s" %% "http4s-blaze-server" % Version.http4s,
-    "org.http4s" %% "http4s-blaze-client" % Version.http4s,
-    "org.http4s" %% "http4s-circe"        % Version.http4s
-    // "org.http4s" %% "http4s-scalatags"    % Version.http4s
-    // "org.http4s" %% "http4s-jdk-http-client" % "0.3.6"
-  )
-
-  // 1.0.0-Mx is on scala 3
-  lazy val doobie = Seq(
-    // Start with this one     (skunk?)
-    "org.tpolecat" %% "doobie-core"     % Version.doobie,
-    "org.tpolecat" %% "doobie-hikari"   % Version.doobie,
-    "org.tpolecat" %% "doobie-postgres" % Version.doobie
-    // "org.tpolecat" %% "doobie-quill"     % doobieV, // Support for Quill 3.4.10
-    // "org.tpolecat" %% "doobie-scalatest" % Version.doobie % Test
-  )
 
   // val chimney = Seq()
   // val spire = Seq()
 
-  lazy val all = http4s ++ scodec ++ testingMUnit ++ circe ++ fs2 ++ cats ++ stdLibs ++ monocle
+  lazy val all = catsParse ++ scodec ++ testingMUnit ++ circe ++ fs2 ++ cats ++ stdLibs ++ monocle
 
 }
