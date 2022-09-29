@@ -20,7 +20,7 @@ object Version {
   val scalaCss   = "0.7.0"
   val scalaTags  = "0.9.4"
   val scodec     = "2.2.0"
-  val scodecBits = "1.1.30"
+  val scodecBits = "1.1.31"
   val slf4s      = "0.3.0"
   // val squantsV                  = "1.7.4"
 
