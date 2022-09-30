@@ -1,12 +1,11 @@
 import sbt._
-object Dependencies {
+object Libs {
 
   lazy val stdLibs = Seq(
-    "com.lihaoyi"          %% "pprint"          % Version.pprint,
-    "com.lihaoyi"          %% "os-lib"          % Version.osLib,
-    "ch.qos.logback"        % "logback-classic" % Version.logback,
-    "rocks.heikoseeberger" %% "slf4s"           % Version.slf4s
-    // "com.outr" %% "scribe" % scribeVersion
+    "com.lihaoyi"   %% "pprint"           % Version.pprint,
+    "com.lihaoyi"   %% "os-lib"           % Version.osLib,
+    "org.typelevel" %% "case-insensitive" % Version.caseInsensitive,
+    "org.typelevel" %% "literally"        % Version.literally
   )
 
   // These are my standard stack and are all ScalaJS enabled.
@@ -59,11 +58,24 @@ object Dependencies {
   )
 
   val catsParse = Seq("org.typelevel" %% "cats-parse" % Version.catsParse)
-  // val libs_squants = Seq("org.typelevel" %% "squants" % squantsV)
+  val squants   = Seq("org.typelevel" %% "squants" % Version.squants)
 
   // val chimney = Seq()
-  // val spire = Seq()
+  val spire = Seq("org.typelevel" %% "spire" % Version.spire)
 
-  lazy val all = catsParse ++ scodec ++ testingMUnit ++ circe ++ fs2 ++ cats ++ stdLibs ++ monocle
+  val decline = Seq("com.monovore" %% "decline" % Version.decline, "com.monovore" %% "decline-effect" % Version.decline)
+
+  val blindsight = Seq(
+    "com.tersesystems.blindsight" %% "blindsight-logstash" % Version.blindsight
+    /*  "com.fasterxml.jackson.module" % "jackson-module-scala" % Version.jackson*/
+  )
+
+  lazy val slf4s = Seq("ch.qos.logback" % "logback-classic" % Version.logback, "rocks.heikoseeberger" %% "slf4s" % Version.slf4s)
+
+  // Scala 3 work in progress but not published
+  val pureconfig = Seq("com.github.pureconfig" %% "pureconfig-core" % Version.pureconfig)
+
+  val comcastNetorks = Seq("com.comcast" %% "ip4s-core" % Version.comcastNetworks)
+  lazy val all       = catsParse ++ scodec ++ testingMUnit ++ circe ++ fs2 ++ cats ++ stdLibs ++ monocle ++ decline ++ blindsight ++ pureconfig
 
 }

@@ -69,9 +69,9 @@ object SchemaParsers {
   /** Requires type kind, mandatory optional default to false, and default value is optional (default is broken probably ?: not happy in
     * general
     */
-  val leafValueMeta: (Parser[String], Parser[Boolean], Parser0[Option[String]]) =
+  val leafValueMeta: Parser[KeyValueMeta] =
     (leafType ~ leafMandatory.orElse(kFalse) ~ leafDefaultWithDefault).map {
-      case ((tipe, mandatory), defaultVal) => KeyValueMeta(tipe, mandatory, defaultVal)
+      case ( (tipe: String, mandatory: Boolean), defaultVal: Option[String]) => KeyValueMeta(tipe, mandatory, defaultVal)
     }
 
   /** TODO: Make this string literal, which is whitespace surrounded and optionally quoted? */

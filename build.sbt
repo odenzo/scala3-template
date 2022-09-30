@@ -1,4 +1,3 @@
-import Dependencies._
 import MyCompileOptions._
 
 inThisBuild(
@@ -9,10 +8,11 @@ inThisBuild(
     licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
     homepage          := Some(url("https://github.com/odenzo/scala3template")),
     developers        := List(Developer("odenzo", "odenzo", "mail@blackhole.com", url("https://github.com/odenzo"))),
-    scalaVersion      := "3.1.2",
+    scalaVersion      := "3.2.0",
     scalacOptions ++= optsV3_0 ++ warningsV3_0 ++ lintersV3_0,
     semanticdbEnabled := true,
-    bspEnabled        := false
+    bspEnabled        := true,
+    mainClass         := Some("com.adtran.utilapp.logparser.aaa.CommandLine")
   )
 )
 
@@ -22,13 +22,19 @@ Test / logBuffered       := false
 
 lazy val root = (project in file("."))
   .settings(name := "YangParserProject")
-  .aggregate(yangparse)
+  .aggregate(yangparse, apilogs)
 
 lazy val yangparse = (project in file("app/yangParser"))
   .settings(
-    libraryDependencies ++= Dependencies.cats ++ Dependencies.catsParse ++ Dependencies.stdLibs
-      ++ Dependencies.monocle ++ Dependencies.circe ++ Dependencies.fs2,
-    libraryDependencies ++= Dependencies.testingMUnit
+    libraryDependencies ++= Libs.cats ++ Libs.catsParse ++ Libs.stdLibs ++ Libs.monocle ++ Libs.circe ++ Libs.fs2,
+    libraryDependencies ++= Libs.testingMUnit
+  )
+
+lazy val apilogs = (project in file("app/logParser"))
+  .settings(
+    libraryDependencies ++= Libs.cats ++ Libs.catsParse ++ Libs.stdLibs ++ Libs.blindsight ++ Libs.decline,
+    libraryDependencies ++= Libs.comcastNetorks,
+    libraryDependencies ++= Libs.testingMUnit
   )
 
 // docs/mdoc --help
