@@ -1,4 +1,5 @@
 import sbt._
+//noinspection TypeAnnotation
 object Libs {
 
   lazy val stdLibs = Seq(
@@ -8,13 +9,23 @@ object Libs {
     "org.typelevel" %% "literally"        % Version.literally
   )
 
+  // For model classes for Method and Uri - snag the basics of client
+  val http4s = Seq("org.http4s" %% "http4s-client" % Version.http4s)
+
   // These are my standard stack and are all ScalaJS enabled.
   lazy val cats = Seq("org.typelevel" %% "cats-core" % Version.cats, "org.typelevel" %% "cats-effect" % Version.catsEffect)
 
   lazy val fs2 = Seq(
-    "co.fs2" %% "fs2-core"             % Version.fs2, // CE 3
-    "co.fs2" %% "fs2-io"               % Version.fs2, //
-    "co.fs2" %% "fs2-reactive-streams" % Version.fs2  // circe-fs2 in the circe lib
+    "co.fs2"    %% "fs2-core"             % Version.fs2, // CE 3
+    "co.fs2"    %% "fs2-io"               % Version.fs2, //
+    "org.gnieh" %% "fs2-data-json-circe"  % Version.fs2Data,
+    "org.gnieh" %% "diffson-circe"        % Version.fs2DiffsonCirce,
+    "co.fs2"    %% "fs2-reactive-streams" % Version.fs2  // circe-fs2 in the circe lib
+    //  "org.systemfw" %% "upperbound" % "0.4.0"
+    /* 2.13 Only
+    libraryDependencies += "dev.rpeters" %% "fs2-es" % "<latest-version>"
+    libraryDependencies += "dev.rpeters" %% "fs2-es-testing" % "<latest-version>" //Test module
+     */
   )
 
   val monocle = Seq(
@@ -26,19 +37,19 @@ object Libs {
   /** Currently this is only for the binary serialization */
   // val libs_html = Seq("com.lihaoyi" %% "scalatags" % Version.scalaTags, "com.github.japgolly.scalacss" %% "core" % Version.scalaCss)
 
-  // As of 0.14.1 Circe Suite Partually migrated to scala 3
+  // As of 0.14.3 Circe Suite Partually migrated to scala 3
   lazy val circe = Seq(
-    "io.circe" %% "circe-core"    % Version.circe,
-    // "io.circe" %% "circe-jackson212" % Version.circe,
-    "io.circe" %% "circe-generic" % Version.circe,
-    // "io.circe" %% "circe-extras"  % Version.circe,
-    "io.circe" %% "circe-parser"  % Version.circe,
-    "io.circe" %% "circe-pointer" % Version.circe,
-    // "io.circe" %% "circe-pointer-literal"    % Version.circe, // Not available 0.14.1
+    "io.circe" %% "circe-core"            % Version.circe,
+    // "io.circe" %% "circe-jackson211" % "0.14.0"
+    "io.circe" %% "circe-generic"         % Version.circe,
+    "io.circe" %% "circe-extras"          % Version.circe,
+    "io.circe" %% "circe-parser"          % Version.circe,
+    "io.circe" %% "circe-pointer"         % Version.circe,
+    "io.circe" %% "circe-pointer-literal" % Version.circe,
     // "io.circe" %% "circe-optics"  % circeOpticsVersion
-    // "io.circe" %% "circe-literal" % Version.circe, // Not available as of 0.14.1
-    "io.circe" %% "circe-scodec"  % Version.circe
-    // "io.circe" %% "circe-fs2"            % circeVersion
+    "io.circe" %% "circe-literal"         % Version.circe,
+    "io.circe" %% "circe-scodec"          % Version.circe,
+    "io.circe" %% "circe-fs2"             % Version.circe
   )
 
   lazy val testingMUnit = Seq( // All these have scalajs and Scala 3
@@ -50,7 +61,6 @@ object Libs {
   )
 
   lazy val scodec = Seq(
-    //  "io.circe"       %% "circe-spire"          % "0.1.0",   Meh, stuck at 2.12
     "org.scodec" %% "scodec-core" % Version.scodec,
     "org.scodec" %% "scodec-bits" % Version.scodecBits
     // ("org.scodec" %% "scodec-stream" % "3.0.0-RC2"),
@@ -76,6 +86,10 @@ object Libs {
   val pureconfig = Seq("com.github.pureconfig" %% "pureconfig-core" % Version.pureconfig)
 
   val comcastNetorks = Seq("com.comcast" %% "ip4s-core" % Version.comcastNetworks)
-  lazy val all       = catsParse ++ scodec ++ testingMUnit ++ circe ++ fs2 ++ cats ++ stdLibs ++ monocle ++ decline ++ blindsight ++ pureconfig
+
+  // Scala 3 Chimney
+  val ducktape = Seq("io.github.arainko" % "ducktape_3" % Version.ducktape)
+
+  lazy val all = catsParse ++ scodec ++ testingMUnit ++ circe ++ fs2 ++ cats ++ stdLibs ++ monocle ++ decline ++ blindsight ++ pureconfig
 
 }

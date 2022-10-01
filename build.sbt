@@ -2,8 +2,8 @@ import MyCompileOptions._
 
 inThisBuild(
   Seq(
-    organization      := "com.odenzo",
-    organizationName  := "odenzo",
+    organization      := "com.adtran",
+    organizationName  := "adtran",
     startYear         := Some(2022),
     licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
     homepage          := Some(url("https://github.com/odenzo/scala3template")),
@@ -21,25 +21,20 @@ Test / parallelExecution := false
 Test / logBuffered       := false
 
 lazy val root = (project in file("."))
-  .settings(name := "YangParserProject")
+  .settings(name := "ParsingUtils")
   .aggregate(yangparse, apilogs)
 
 lazy val yangparse = (project in file("app/yangParser"))
   .settings(
+    name := "YangSchemaParsing",
     libraryDependencies ++= Libs.cats ++ Libs.catsParse ++ Libs.stdLibs ++ Libs.monocle ++ Libs.circe ++ Libs.fs2,
     libraryDependencies ++= Libs.testingMUnit
   )
 
-lazy val apilogs = (project in file("app/logParser"))
+lazy val apilogs = (project in file("app/logparser"))
   .settings(
-    libraryDependencies ++= Libs.cats ++ Libs.catsParse ++ Libs.stdLibs ++ Libs.blindsight ++ Libs.decline,
-    libraryDependencies ++= Libs.comcastNetorks,
+    name := "LogFileParsing",
+    libraryDependencies ++= Libs.cats ++ Libs.catsParse ++ Libs.stdLibs ++ Libs.blindsight ++ Libs.decline ++ Libs.circe,
+    libraryDependencies ++= Libs.comcastNetorks ++ Libs.http4s,
     libraryDependencies ++= Libs.testingMUnit
   )
-
-// docs/mdoc --help
-lazy val docs = project // new documentation project
-  .in(file("yang-parser-docs")) // important: it must not be docs/
-  .settings(mdocVariables := Map("VERSION" -> version.value), moduleName := "yang-parser-docs")
-  .dependsOn(root)
-  .enablePlugins(MdocPlugin, DocusaurusPlugin)
