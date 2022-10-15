@@ -1,13 +1,13 @@
 import sbt._
 
 object Version {
-  val cats = "2.7.0"
+  val cats       = "2.7.0"
 
   val catsEffect = "3.3.12"
   val circe      = "0.14.1"
 
-  val doobie = "1.0.0-RC2"
-  val fs2    = "3.2.7"
+  val doobie     = "1.0.0-RC2"
+  val fs2        = "3.2.7"
 
   val logback = "1.2.11"
 
