@@ -10,14 +10,8 @@ object Version {
   val circe           = "0.14.3"
   val doobie          = "1.0.0-RC2"
   val fs2             = "3.3.0"
-
-
-
   val fs2DiffsonCirce = "4.3.0"
-
-
   val fs2Data         = "1.5.1"
-
   val monocle         = "3.1.0"
   val http4s          = "1.0.0-M37"
   // Logging Options
@@ -30,6 +24,16 @@ object Version {
 
   val munit     = "0.7.29"
   val munitCats = "1.0.7"
+
+
+  val osLib      = "0.8.1"
+  val pprint     = "0.7.3"
+  val scala      = "1.15.3"
+  val scalaCss   = "0.7.0"
+  val scalaTags  = "0.9.4"
+
+  val slf4s      = "0.3.0"
+  // val squantsV                  = "1.7.4"
 
 
   // Common Utility Libraries
