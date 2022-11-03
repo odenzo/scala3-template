@@ -8,8 +8,13 @@ object Version {
   val circe           = "0.14.3"
   val doobie          = "1.0.0-RC2"
   val fs2             = "3.3.0"
+
+
+  val fs2DiffsonCirce = "4.3.0"
+
   val fs2Data         = "1.5.1"
-  val fs2DiffsonCirce = "4.2.1"
+
+
   val monocle         = "3.1.0"
   val http4s          = "1.0.0-M37"
   // Logging Options
