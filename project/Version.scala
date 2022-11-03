@@ -10,6 +10,7 @@ object Version {
   val doobie          = "1.0.0-RC2"
   val fs2             = "3.3.0"
 
+
   val fs2DiffsonCirce = "4.3.0"
 
 
