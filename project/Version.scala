@@ -29,6 +29,7 @@ object Version {
   val munit     = "0.7.29"
   val munitCats = "1.0.7"
 
+
   // Common Utility Libraries
   val osLib           = "0.8.1"
   val pprint          = "0.8.0"
@@ -42,6 +43,7 @@ object Version {
   val caseInsensitive = "1.3.0"
   val literally       = "1.1.0"
   val ducktape        = "0.1.0-RC2"
+
 
   // libraryDependencies += "org.gnieh" %% f"diffson-$jsonLib" % "4.1.1"
 }
