@@ -1,6 +1,7 @@
 import sbt._
 
 object Version {
+
   // Very Standard Stack
   val cats            = "2.8.0"
   val catsEffect      = "3.3.14"
@@ -9,11 +10,9 @@ object Version {
   val doobie          = "1.0.0-RC2"
   val fs2             = "3.3.0"
 
-
   val fs2DiffsonCirce = "4.3.0"
 
   val fs2Data         = "1.5.1"
-
 
   val monocle         = "3.1.0"
   val http4s          = "1.0.0-M37"
@@ -24,6 +23,7 @@ object Version {
   val jackson         = "2.11.0"
 
   // Testing Options, munit usually, or weavertest for integrations
+
   val munit     = "0.7.29"
   val munitCats = "1.0.7"
 
