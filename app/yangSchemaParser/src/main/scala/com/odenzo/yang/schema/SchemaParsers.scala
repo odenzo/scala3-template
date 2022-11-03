@@ -71,7 +71,7 @@ object SchemaParsers {
     */
   val leafValueMeta: Parser[KeyValueMeta] =
     (leafType ~ leafMandatory.orElse(kFalse) ~ leafDefaultWithDefault).map {
-      case ( (tipe: String, mandatory: Boolean), defaultVal: Option[String]) => KeyValueMeta(tipe, mandatory, defaultVal)
+      case ((tipe: String, mandatory: Boolean), defaultVal: Option[String]) => KeyValueMeta(tipe, mandatory, defaultVal)
     }
 
   /** TODO: Make this string literal, which is whitespace surrounded and optionally quoted? */
