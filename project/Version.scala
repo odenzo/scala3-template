@@ -2,6 +2,7 @@ import sbt._
 
 object Version {
 
+
   // Very Standard Stack
   val cats            = "2.8.0"
   val catsEffect      = "3.3.14"
@@ -9,6 +10,7 @@ object Version {
   val circe           = "0.14.3"
   val doobie          = "1.0.0-RC2"
   val fs2             = "3.3.0"
+
 
 
   val fs2DiffsonCirce = "4.3.0"
