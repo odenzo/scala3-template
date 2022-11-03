@@ -1,26 +1,16 @@
-# Scala 3 Template
+# Scala 3 Parsers
 
-Template project with Scala 3 and my "standard" stack with Scala Steward to keep it up to date.
-The primary dependency drivers are Cats Effect 3.x and Scala 3
+## AAA-Accounting Log Parser
+Parses aaa-accounting to get all the external API calls.
+Has some re-usable parsing bits (Cats-Parse)
 
-Stack:
-- Cats
-- Cats Effect 3
-- FS2 - 3.03  for Cats Effect 3, Scala 3
-- Circe (Milestones)
-- Doobie **Trouble**
-- http4s **Trouble**
-- scodec-bits
-- Monocle 3.x.x -- but no CHimney or Circe Optics
-             
-Testing:
-- mockito
-- munit
-- scalacheck
-  
-The standard libraries will be re-written and broken down by module.
-        
-odenzo-common: 
-    - Utilities that just rely on logging, Cats Effect, Cats, and Circe, PPrint, os.lib
-    - Generic helpers and some customer errors
-    - OPrint as example of extending PPrint
+Main runner: com.adtran.utilapp.logparser.aaa.CommandLineMain
+
+Might as well set it up for Scala CLI style usage (shell scripting)
+
+## Yang Parser/Model Generator
+
+Tried, and going to abandon and use some of the Java opensource stuff as base.
+
+Idea is to spit out case classes, like an OpenAPI thing basically, but delegate to Json
+when some items are too complicated etc.
