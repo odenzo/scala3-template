@@ -12,6 +12,7 @@ object Version {
 
   val fs2DiffsonCirce = "4.3.0"
 
+
   val fs2Data         = "1.5.1"
 
   val monocle         = "3.1.0"
