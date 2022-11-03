@@ -1,0 +1,35 @@
+<configuration scan="true" monitorInterval="60" packagingData="false" debug="false">
+	<!-- Problem is blindsight tells me its library line :-( -->
+	<property name="blindsight.source.enabled" value="true"/>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="net.logstash.logback.encoder.LogstashEncoder">
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<appender name="HUMAN" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>HUMAN: %d{HH:mm:ss.SSS}  %-5level %logger - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="LOGSTASH" class='ch.qos.logback.core.ConsoleAppender'>
+		<encoder class="net.logstash.logback.encoder.LogstashEncoder">
+			<includeCallerData>true</includeCallerData>
+		</encoder>
+	</appender>
+
+	<logger name="ch.qos.logback" level="WARN"/>
+
+	<logger name="org.http4s.client.PoolManager" level="WARN"/>
+	<logger name="org.http4s.client.blaze" level="INFO"/>
+	<logger name="org.http4s.blaze.channel" level="INFO"/>
+	<logger name="org.http4s.blazecore" level="INFO"/>
+	<logger name="org.http4s" level="INFO"/>
+	<logger name="com.adtran" level="DEBUG"/>
+
+	<root level="DEBUG">
+		<appender-ref ref="HUMAN"/>
+	</root>
+</configuration>
